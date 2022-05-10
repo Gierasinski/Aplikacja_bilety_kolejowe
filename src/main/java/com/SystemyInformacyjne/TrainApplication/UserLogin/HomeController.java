@@ -1,3 +1,4 @@
+/*
 package com.SystemyInformacyjne.TrainApplication.UserLogin;
 
 import com.SystemyInformacyjne.TrainApplication.UserRegistration.UserRegistrationController;
@@ -24,3 +25,5 @@ public class HomeController {
 
 
 }
+
+ */

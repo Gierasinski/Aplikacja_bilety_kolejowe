@@ -1,3 +1,4 @@
+/*
 package com.SystemyInformacyjne.TrainApplication.UserLogin;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,3 +47,5 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .httpBasic();
         }
 }
+
+ */

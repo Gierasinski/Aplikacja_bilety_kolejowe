@@ -1,16 +1,13 @@
-/*
-package com.SystemyInformacyjne.TrainApplication.UserRegistration;
+package com.SystemyInformacyjne.TrainApplication.Jwt.payload.request;
 
-public class UserRegistrationDto {
+import javax.validation.constraints.NotBlank;
 
+public class LoginRequest {
+    @NotBlank
     private String username;
-    private String password;
 
-    public UserRegistrationDto(String username, String password) {
-        super();
-        this.username = username;
-        this.password = password;
-    }
+    @NotBlank
+    private String password;
 
     public String getUsername() {
         return username;
@@ -27,9 +24,4 @@ public class UserRegistrationDto {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
 }
-
- */

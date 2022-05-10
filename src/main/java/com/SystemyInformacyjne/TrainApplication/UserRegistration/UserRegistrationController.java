@@ -1,3 +1,4 @@
+/*
 package com.SystemyInformacyjne.TrainApplication.UserRegistration;
 
 import org.springframework.stereotype.Controller;
@@ -36,3 +37,5 @@ public class UserRegistrationController {
         return "redirect:/registration?success";
     }
 }
+
+ */

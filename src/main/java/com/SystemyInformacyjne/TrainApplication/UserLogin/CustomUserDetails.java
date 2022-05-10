@@ -1,8 +1,10 @@
+/*
 package com.SystemyInformacyjne.TrainApplication.UserLogin;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 import java.util.Collection;
 import java.util.Collections;
@@ -52,3 +54,11 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 }
+
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.globally_quoted_identifiers=true
+spring.datasource.url=jdbc:postgresql://localhost:5432/trainSystem
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+ */

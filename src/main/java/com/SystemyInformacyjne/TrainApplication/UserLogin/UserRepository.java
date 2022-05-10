@@ -1,3 +1,4 @@
+/*
 package com.SystemyInformacyjne.TrainApplication.UserLogin;
 
 import com.SystemyInformacyjne.TrainApplication.UserLogin.User;
@@ -9,3 +10,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUsername(String username);
 }
+
+ */

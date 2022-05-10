@@ -1,3 +1,4 @@
+/*
 package com.SystemyInformacyjne.TrainApplication.UserLogin;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,3 +24,5 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new CustomUserDetails(user);
     }
 }
+
+ */

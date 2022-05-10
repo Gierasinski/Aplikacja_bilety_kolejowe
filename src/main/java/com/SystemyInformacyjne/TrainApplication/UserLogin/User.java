@@ -1,3 +1,4 @@
+/*
 package com.SystemyInformacyjne.TrainApplication.UserLogin;
 
 import javax.persistence.Entity;
@@ -66,3 +67,5 @@ public class User {
         this.role = role;
     }
 }
+
+ */

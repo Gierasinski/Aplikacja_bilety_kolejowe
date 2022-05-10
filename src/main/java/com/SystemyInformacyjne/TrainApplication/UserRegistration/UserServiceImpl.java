@@ -1,3 +1,4 @@
+/*
 package com.SystemyInformacyjne.TrainApplication.UserRegistration;
 
 import com.SystemyInformacyjne.TrainApplication.UserLogin.User;
@@ -23,3 +24,5 @@ public class UserServiceImpl implements  UserService{
         return userRepository.save(user);
     }
 }
+
+ */
