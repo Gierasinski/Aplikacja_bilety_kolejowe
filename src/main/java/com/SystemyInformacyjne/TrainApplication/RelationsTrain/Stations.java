@@ -1,5 +1,7 @@
 package com.SystemyInformacyjne.TrainApplication.RelationsTrain;
 
+import org.springframework.data.jpa.repository.Query;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -22,6 +24,11 @@ public class Stations {
  */
     public Stations(){
 
+    }
+
+    @Query(value = "Select City from stations, Connection where stations.id= 1? and connection.id_station_final_id = 1?")
+    Stations findCity(Integer id) {
+        return null;
     }
 
 
