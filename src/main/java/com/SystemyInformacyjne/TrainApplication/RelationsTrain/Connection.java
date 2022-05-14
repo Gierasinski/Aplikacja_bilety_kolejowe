@@ -12,20 +12,9 @@ public class Connection {
     @Column(unique = true, nullable = false)
     private long Id;
 
-/*
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "Id")
-    private Train train;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "Id")
-    private Stations idStationStarting;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "Id")
-    private Stations idStationFinal;
-*/
-    private int train_id;
-    private int idStationStarting_id;
-    private int idStationFinal_id;
+    private String train;
+    private String stationStarting;
+    private String stationFinal;
     private String dataStarting;
     private String timeStarting;
     private String dataFinal;
@@ -41,6 +30,8 @@ public class Connection {
     public Connection(){
 
     }
+
+
 
     public long getId() {
         return Id;
@@ -65,31 +56,32 @@ public class Connection {
     public void setPrize(float prize) {
         this.prize = prize;
     }
-/*
-    public Train getTrain() {
+
+
+    public String getTrain() {
         return train;
     }
 
-    public void setTrain(Train train) {
+    public void setTrain(String train) {
         this.train = train;
     }
 
-    public Stations getIdStationStarting() {
-        return idStationStarting;
+    public String getStationStarting() {
+        return stationStarting;
     }
 
-    public void setIdStationStarting(Stations idStationStarting) {
-        this.idStationStarting = idStationStarting;
+    public void setStationStarting(String stationStarting) {
+        this.stationStarting = stationStarting;
     }
 
-    public Stations getIdStationFinal() {
-        return idStationFinal;
+    public String getStationFinal() {
+        return stationFinal;
     }
 
-    public void setIdStationFinal(Stations idStationFinal) {
-        this.idStationFinal = idStationFinal;
+    public void setStationFinal(String stationFinal) {
+        this.stationFinal = stationFinal;
     }
-*/
+
     public String getDataStarting() {
         return dataStarting;
     }
