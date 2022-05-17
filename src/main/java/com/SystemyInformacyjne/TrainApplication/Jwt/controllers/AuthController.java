@@ -25,6 +25,7 @@ import com.SystemyInformacyjne.TrainApplication.Jwt.repository.RoleRepository;
 import com.SystemyInformacyjne.TrainApplication.Jwt.repository.UserRepository;
 import com.SystemyInformacyjne.TrainApplication.Jwt.security.jwt.JwtUtils;
 import com.SystemyInformacyjne.TrainApplication.Jwt.security.services.UserDetailsImpl;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
