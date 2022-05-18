@@ -54,17 +54,38 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests()
-                .antMatchers("/api/auth/**")
-                .permitAll()
-                .antMatchers("/api/test/**").permitAll()
-                .antMatchers("/api/connection/**").permitAll()
-                .anyRequest().authenticated();
+        http
+                .cors().and().csrf().disable()
+//              .authorizeRequests()
+//                .antMatchers("/apis/social/**").permitAll().and()
+//                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+
+                .antMatcher("/apis/**").authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .oauth2Login()
+                .authorizationEndpoint()
+                .baseUri("/apis/oauth2/authorization")
+                .and()
+                .redirectionEndpoint()
+                .baseUri("/apis/oauth2/code/*");
+
+
+
+//                .cors().and().csrf().disable()
+//                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+//                .authorizeRequests()
+//                .antMatchers("/api/auth/**")
+//                .permitAll()
+//                .antMatchers("/api/test/**").permitAll()
+//                .antMatchers("/api/connection/**").permitAll()
+//                .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
+
 
 }

@@ -8,15 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@RequestMapping("/social")
 public class SocialController {
 
-    @GetMapping("/")
-    public String helloWorld() {
-        return "you don't need to be logged in";
-    }
+//    @GetMapping("/")
+//    public String helloWorld() {
+//        return "hello word";
+//    }
 
-    @GetMapping("/restricted")
+    @GetMapping("/")
     public String restricted() {
-        return "if you see this you are logged in";
+        return "zalogowany";
     }
 }
