@@ -55,21 +55,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .cors().and().csrf().disable()
-//              .authorizeRequests()
-//                .antMatchers("/apis/social/**").permitAll().and()
+               .cors().and().csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/apis/**").hasRole("USER").and()
 //                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 //                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-
-                .antMatcher("/apis/**").authorizeRequests()
+//                .authorizeRequests()
+//                .antMatchers("/apis").permitAll().and()
+                .antMatcher("/**").authorizeRequests()
+                .antMatchers("/api/auth/**", "/api/test/**","/api/connection/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .oauth2Login()
-                .authorizationEndpoint()
-                .baseUri("/apis/oauth2/authorization")
-                .and()
-                .redirectionEndpoint()
-                .baseUri("/apis/oauth2/code/*");
+                .oauth2Login();
+//                    .authorizationEndpoint()
+//                    .baseUri("/apis/oauth2/authorization")
+//                    .and()
+//                    .redirectionEndpoint()
+//                    .baseUri("/apis/home/*");
 
 
 
