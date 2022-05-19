@@ -16,7 +16,7 @@ import java.util.Map;
 public class ConnectionController {
 
     @Autowired
-    ConnectionRepositoryImpl connectionRepositoryImpl;
+    private ConnectionRepositoryImpl connectionRepositoryImpl;
 
 //    public ConnectionController(ConnectionRepositoryImpl connectionRepositoryImpl) {
 //        this.connectionRepositoryImpl = connectionRepositoryImpl;
@@ -35,6 +35,11 @@ public class ConnectionController {
 //        List<Connection> list = connectionRepositoryImpl.findAllByDateAndFromAndTo(date, from, to);
 //        return list;
         return null;
+    }
+
+    @PostMapping("/add")
+    public Connection createConnection(@RequestBody Connection connection) {
+        return connectionRepositoryImpl.save(connection);
     }
 /*
     // get employee by id rest api
