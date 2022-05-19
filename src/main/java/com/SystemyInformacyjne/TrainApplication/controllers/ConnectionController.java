@@ -26,19 +26,21 @@ public class ConnectionController {
         return connectionRepository.findAll();
     }
 
-    //get all connect
-    @GetMapping("/view/{date}/{from}/{to}")
-    public List<Connection> getOneConnection(@PathParam("date") String date, @PathParam("from") String from, @PathParam("to") String to) {
-
-//        List<Connection> list = connectionRepositoryImpl.findAllByDateAndFromAndTo(date, from, to);
-//        return list;
-        return null;
-    }
+//    //get all connect
+//    @GetMapping("/view/{date}/{from}/{to}")
+//    public List<Connection> getOneConnection(@PathParam("date") String date, @PathParam("from") String from, @PathParam("to") String to) {
+//
+////        List<Connection> list = connectionRepositoryImpl.findAllByDateAndFromAndTo(date, from, to);
+////        return list;
+//        return null;
+//    }
 
     @PostMapping("/add")
     public Connection createConnection(@RequestBody Connection connection) {
         return connectionRepository.save(connection);
     }
+
+
 /*
     // get employee by id rest api
     @GetMapping("/view/{id}")

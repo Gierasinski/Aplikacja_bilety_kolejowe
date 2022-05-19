@@ -15,37 +15,55 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    private int polaczenie;
+    private int connection;
     @NotBlank
-    private int konto;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "ticket_payment",
-            joinColumns = @JoinColumn(name = "ticket_id"),
-            inverseJoinColumns = @JoinColumn(name = "payment_id"))
-    private Set<Payment> payments = new HashSet<>();
+    private int account;
+    @NotBlank
+    private int payments;
+    @NotBlank
+    private int reduction;
+    @NotBlank
+    private String userName;
+    @NotBlank
+    private String userSurname;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "ticket_reduction",
-            joinColumns = @JoinColumn(name = "ticket_id"),
-            inverseJoinColumns = @JoinColumn(name = "reduction_id"))
-    private Set<Reduction> reductions = new HashSet<>();
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(	name = "ticket_payment",
+//            joinColumns = @JoinColumn(name = "ticket_id"),
+//            inverseJoinColumns = @JoinColumn(name = "payment_id"))
+//    private Set<Payment> payments = new HashSet<>();
+//
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(	name = "ticket_reduction",
+//            joinColumns = @JoinColumn(name = "ticket_id"),
+//            inverseJoinColumns = @JoinColumn(name = "reduction_id"))
+//    private Set<Reduction> reductions = new HashSet<>();
 
     @NotBlank
     private String dates;
     @NotBlank
     private int site;
+    @NotBlank
+    private float prize;
 
     public Ticket(){
 
     }
 
-    public Ticket(Long id, int polaczenie, int konto, String dates, int site) {
+    public Ticket(Long id, int connection, int account, int payments, int reduction, String userName, String userSurname, String dates, int site) {
         this.id = id;
-        this.polaczenie = polaczenie;
-        this.konto = konto;
+        this.connection = connection;
+        this.account = account;
+        this.payments = payments;
+        this.reduction = reduction;
+        this.userName = userName;
+        this.userSurname = userSurname;
         this.dates = dates;
         this.site = site;
     }
+
+
 
     public Long getId() {
         return id;
@@ -55,36 +73,60 @@ public class Ticket {
         this.id = id;
     }
 
-    public int getPolaczenie() {
-        return polaczenie;
+    public int getConnection() {
+        return connection;
     }
 
-    public void setPolaczenie(int polaczenie) {
-        this.polaczenie = polaczenie;
+    public float getPrize() {
+        return prize;
     }
 
-    public int getKonto() {
-        return konto;
+    public void setPrize(float prize) {
+        this.prize = prize;
     }
 
-    public void setKonto(int konto) {
-        this.konto = konto;
+    public void setConnection(int connection) {
+        this.connection = connection;
     }
 
-    public Set<Payment> getPayments() {
+    public int getAccount() {
+        return account;
+    }
+
+    public void setAccount(int account) {
+        this.account = account;
+    }
+
+    public int getPayments() {
         return payments;
     }
 
-    public void setPayments(Set<Payment> payments) {
+    public void setPayments(int payments) {
         this.payments = payments;
     }
 
-    public Set<Reduction> getReductions() {
-        return reductions;
+    public int getReduction() {
+        return reduction;
     }
 
-    public void setReductions(Set<Reduction> reductions) {
-        this.reductions = reductions;
+    public void setReduction(int reduction) {
+        this.reduction = reduction;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserSurname() {
+        return userSurname;
+    }
+
+    public void setUserSurname(String userSurname) {
+        this.userSurname = userSurname;
     }
 
     public String getDates() {
