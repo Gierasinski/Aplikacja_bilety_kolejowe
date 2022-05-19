@@ -1,8 +1,11 @@
 package com.SystemyInformacyjne.TrainApplication.controllers;
 
+import com.SystemyInformacyjne.TrainApplication.models.Ticket;
+import com.SystemyInformacyjne.TrainApplication.payload.response.ResourceNotFoundException;
 import com.SystemyInformacyjne.TrainApplication.repository.ConnectionRepository;
 import com.SystemyInformacyjne.TrainApplication.models.Connection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -20,7 +23,7 @@ public class ConnectionController {
 //        this.connectionRepositoryImpl = connectionRepositoryImpl;
 //    }
 
-    //get all connect
+
     @GetMapping("/view")
     public List<Connection> getAllConnection() {
         return connectionRepository.findAll();
@@ -40,16 +43,12 @@ public class ConnectionController {
         return connectionRepository.save(connection);
     }
 
-
-/*
-    // get employee by id rest api
-    @GetMapping("/view/{id}")
-    public ResponseEntity<Connection> getConnectionById(@PathVariable String from) {
-
-        Connection connection = connectionRepositoryImpl.findByName(from);
-
+    @GetMapping("/one/{id}")
+    public ResponseEntity<Connection> getTicketById(@PathVariable Long id) {
+        Connection connection = connectionRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("ticket not exist with id :" + id));
         return ResponseEntity.ok(connection);
     }
 
-     */
+
 }
