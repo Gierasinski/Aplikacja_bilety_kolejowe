@@ -21,7 +21,7 @@ public class Ticket {
     @NotBlank
     private int payments;
     @NotBlank
-    private int reduction;
+    private float reduction;
     @NotBlank
     private String userName;
     @NotBlank
@@ -51,7 +51,7 @@ public class Ticket {
 
     }
 
-    public Ticket(Long id, int connection, int account, int payments, int reduction, String userName, String userSurname, String dates, int site) {
+    public Ticket(Long id, int connection, int account, int payments, float reduction, String userName, String userSurname, String dates, int site) {
         this.id = id;
         this.connection = connection;
         this.account = account;
@@ -105,11 +105,11 @@ public class Ticket {
         this.payments = payments;
     }
 
-    public int getReduction() {
+    public float getReduction() {
         return reduction;
     }
 
-    public void setReduction(int reduction) {
+    public void setReduction(float reduction) {
         this.reduction = reduction;
     }
 
