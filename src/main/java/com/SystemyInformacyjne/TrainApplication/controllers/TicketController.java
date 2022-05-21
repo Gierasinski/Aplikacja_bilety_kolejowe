@@ -21,11 +21,6 @@ public class TicketController {
         return ticketRepository.findAll();
     }
 
-    @GetMapping("/one")
-    public List<Ticket> getOneTicket(){
-        return ticketRepository.findTopByOrderByIdDesc();
-    }
-
     @PostMapping("/add")
     public Ticket createTicket(@RequestBody Ticket ticket) {
         return ticketRepository.save(ticket);
@@ -38,20 +33,10 @@ public class TicketController {
         return ResponseEntity.ok(ticket);
     }
 
-    @PutMapping("/first/{id}")
-    public ResponseEntity<Ticket> updateTicket(@PathVariable Long id, @RequestBody Ticket ticketDetails){
-        Ticket ticket = ticketRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
-
-        ticket.setConnection(ticketDetails.getConnection());
-        Ticket updatedTicket = ticketRepository.save(ticket);
-        return ResponseEntity.ok(updatedTicket);
-    }
-
     @PutMapping("/second/{id}")
     public ResponseEntity<Ticket> updateSecondTicket(@PathVariable Long id, @RequestBody Ticket ticketDetails){
         Ticket ticket = ticketRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Ticket not exist with id :" + id));
 
         ticket.setReduction(ticketDetails.getReduction());
         ticket.setUserName(ticketDetails.getUserName());
@@ -67,7 +52,7 @@ public class TicketController {
     @PutMapping("/third/{id}")
     public ResponseEntity<Ticket> updateThirdTicket(@PathVariable Long id, @RequestBody Ticket ticketDetails){
         Ticket ticket = ticketRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Ticket not exist with id :" + id));
 
         ticket.setPayments(ticketDetails.getPayments());
         ticket.setAccount(ticketDetails.getAccount());
