@@ -1,6 +1,8 @@
 package com.SystemyInformacyjne.TrainApplication.security.jwt;
 
 import java.util.Date;
+
+import com.SystemyInformacyjne.TrainApplication.security.oauth.CustomOAuth2User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +20,11 @@ public class JwtUtils {
     public String generateJwtToken(Authentication authentication) {
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
         return Jwts.builder().setSubject((userPrincipal.getUsername())).setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs)).signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .compact();
+    }
+    public String generateJwtToken(CustomOAuth2User oauthUser) {
+        return Jwts.builder().setSubject((oauthUser.getEmail())).setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs)).signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
