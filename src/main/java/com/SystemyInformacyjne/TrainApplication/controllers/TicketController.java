@@ -21,6 +21,11 @@ public class TicketController {
         return ticketRepository.findAll();
     }
 
+    @GetMapping("/all/{id}")
+    public List<Ticket> getAllTicketByAccount(@PathVariable int id){
+        return ticketRepository.findAllByAccount(id);
+    }
+
     @PostMapping("/add")
     public Ticket createTicket(@RequestBody Ticket ticket) {
         return ticketRepository.save(ticket);
