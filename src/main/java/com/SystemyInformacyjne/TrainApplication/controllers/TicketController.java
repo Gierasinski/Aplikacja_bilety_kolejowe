@@ -61,8 +61,9 @@ public class TicketController {
 
         ticket.setPayments(ticketDetails.getPayments());
         ticket.setAccount(ticketDetails.getAccount());
-
         Ticket updatedTicket = ticketRepository.save(ticket);
+
+
         return ResponseEntity.ok(updatedTicket);
     }
 

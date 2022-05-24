@@ -2,9 +2,6 @@ package com.SystemyInformacyjne.TrainApplication.models;
 
 import javax.persistence.*;
 
-import java.util.Date;
-import java.util.Set;
-
 @Entity
 public class Connection {
     @Id
@@ -20,11 +17,6 @@ public class Connection {
     private String dataFinal;
     private String timeFinal;
     private float prize;
-
-
-
-
-
 
 
     public Connection(){
