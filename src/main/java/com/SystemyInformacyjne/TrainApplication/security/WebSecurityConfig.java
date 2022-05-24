@@ -1,10 +1,12 @@
 
 package com.SystemyInformacyjne.TrainApplication.security;
 
-import com.SystemyInformacyjne.TrainApplication.payload.response.JwtResponse;
 import com.SystemyInformacyjne.TrainApplication.security.jwt.AuthEntryPointJwt;
+import com.SystemyInformacyjne.TrainApplication.security.jwt.AuthTokenFilter;
 import com.SystemyInformacyjne.TrainApplication.security.oauth.CustomOAuth2User;
+import com.SystemyInformacyjne.TrainApplication.security.oauth.CustomOAuth2UserService;
 import com.SystemyInformacyjne.TrainApplication.security.oauth.UserService;
+import com.SystemyInformacyjne.TrainApplication.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +22,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.SystemyInformacyjne.TrainApplication.security.jwt.AuthTokenFilter;
-import com.SystemyInformacyjne.TrainApplication.security.services.UserDetailsServiceImpl;
-import com.SystemyInformacyjne.TrainApplication.security.oauth.CustomOAuth2UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -79,7 +78,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/apis").permitAll().and()
                 .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/api/auth/**", "/api/test/**","/api/connection/**", "/api/payment/**", "/api/ticket/**").permitAll()
+                .antMatchers("/api/auth/**", "/api/test/**","/api/connection/**", "/api/payment/**", "/api/ticket/**", "/api/site/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .oauth2Login()

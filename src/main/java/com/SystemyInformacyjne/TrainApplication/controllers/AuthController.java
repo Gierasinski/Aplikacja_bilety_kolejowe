@@ -1,12 +1,16 @@
 package com.SystemyInformacyjne.TrainApplication.controllers;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.validation.Valid;
-
+import com.SystemyInformacyjne.TrainApplication.models.*;
+import com.SystemyInformacyjne.TrainApplication.payload.request.LoginRequest;
+import com.SystemyInformacyjne.TrainApplication.payload.request.SignupRequest;
+import com.SystemyInformacyjne.TrainApplication.payload.response.JwtResponse;
+import com.SystemyInformacyjne.TrainApplication.payload.response.MessageResponse;
+import com.SystemyInformacyjne.TrainApplication.payload.response.ResourceNotFoundException;
+import com.SystemyInformacyjne.TrainApplication.repository.RoleRepository;
+import com.SystemyInformacyjne.TrainApplication.repository.UserRepository;
+import com.SystemyInformacyjne.TrainApplication.security.jwt.JwtUtils;
 import com.SystemyInformacyjne.TrainApplication.security.oauth.Provider;
+import com.SystemyInformacyjne.TrainApplication.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,17 +20,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import com.SystemyInformacyjne.TrainApplication.models.ERole;
-import com.SystemyInformacyjne.TrainApplication.models.Role;
-import com.SystemyInformacyjne.TrainApplication.models.User;
-import com.SystemyInformacyjne.TrainApplication.payload.request.LoginRequest;
-import com.SystemyInformacyjne.TrainApplication.payload.request.SignupRequest;
-import com.SystemyInformacyjne.TrainApplication.payload.response.JwtResponse;
-import com.SystemyInformacyjne.TrainApplication.payload.response.MessageResponse;
-import com.SystemyInformacyjne.TrainApplication.repository.RoleRepository;
-import com.SystemyInformacyjne.TrainApplication.repository.UserRepository;
-import com.SystemyInformacyjne.TrainApplication.security.jwt.JwtUtils;
-import com.SystemyInformacyjne.TrainApplication.security.services.UserDetailsImpl;
+
+import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -107,6 +106,18 @@ public class AuthController {
         user.setProvider(Provider.LOCAL);
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> updateSites(@PathVariable Long id, @RequestBody User userDetails){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Site not exist with id :" + id));
+
+        user.setPassword(encoder.encode(userDetails.getPassword()));
+        User updatedSites = userRepository.save(user);
+
+        return ResponseEntity.ok(updatedSites);
     }
 
 
