@@ -1,5 +1,7 @@
 package com.SystemyInformacyjne.TrainApplication.payload.request;
 
+import com.SystemyInformacyjne.TrainApplication.models.User;
+
 import javax.validation.constraints.NotBlank;
 
 public class LoginRequest {
@@ -8,6 +10,7 @@ public class LoginRequest {
 
     @NotBlank
     private String password;
+
 
     public String getUsername() {
         return username;
