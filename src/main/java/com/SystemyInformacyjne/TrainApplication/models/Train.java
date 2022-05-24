@@ -1,7 +1,6 @@
 package com.SystemyInformacyjne.TrainApplication.models;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Train {
@@ -10,6 +9,8 @@ public class Train {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private long Id;
+
+
 
     private String Name;
 /*
