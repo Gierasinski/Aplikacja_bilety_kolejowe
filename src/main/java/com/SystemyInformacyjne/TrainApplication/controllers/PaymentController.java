@@ -1,9 +1,7 @@
 package com.SystemyInformacyjne.TrainApplication.controllers;
 
 import com.SystemyInformacyjne.TrainApplication.models.Payment;
-import com.SystemyInformacyjne.TrainApplication.models.Ticket;
 import com.SystemyInformacyjne.TrainApplication.repository.PaymentRepository;
-import com.SystemyInformacyjne.TrainApplication.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +19,7 @@ public class PaymentController {
     public List<Payment> getAllPayment(){
         return paymentRepository.findAll();
     }
+
 
     @PostMapping("/add")
     public Payment createPayment(@RequestBody Payment payment) {
