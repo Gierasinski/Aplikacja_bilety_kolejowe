@@ -1,4 +1,4 @@
-/*
+
 package com.SystemyInformacyjne.TrainApplication.controllers;
 
 import com.SystemyInformacyjne.TrainApplication.models.ERole;
@@ -18,15 +18,20 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import java.util.HashSet;
 import java.util.Set;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.springframework.test.context.ActiveProfiles;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 class AuthControllerTest{
     @Autowired
     private MockMvc mockMvc;
@@ -34,7 +39,7 @@ class AuthControllerTest{
     @Autowired
     AuthController auth;
     private ObjectMapper mapper = new ObjectMapper();
-    @Test
+   /* @Test
     void executingFinders() throws Exception {
 
        LoginRequest login = new LoginRequest();
@@ -44,7 +49,7 @@ class AuthControllerTest{
         mockMvc.perform(post("/api/auth/signin").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8").content(json).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-    }
+    }*/
     @Test
     void authenticateUser() throws Exception {
         LoginRequest loginRequest = new LoginRequest();
@@ -52,8 +57,14 @@ class AuthControllerTest{
         loginRequest.setPassword("secret");
         String json = mapper.writeValueAsString(loginRequest);
 
-        mockMvc.perform(post("/api/auth/signup").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8").content(json).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+        ResultActions result = mockMvc.perform(post("/api/auth/signup").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
+                        .content(json).accept(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isOk());
+       // System.out.println(result.toString());
+   /*     mockMvc.perform(MockMvcRequestBuilders.delete("/users/1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());*/
+
     }
     @Test
     void testRegisterUser() throws Exception {
@@ -69,5 +80,7 @@ class AuthControllerTest{
         //Mockito.when(userRepository.save(user));
         mockMvc.perform(post("/api/auth/signup").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8").content(json).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+
     }
-}*/
+
+}

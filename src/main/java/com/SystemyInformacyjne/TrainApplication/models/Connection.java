@@ -23,7 +23,17 @@ public class Connection {
 
     }
 
-
+    public Connection(long id,String train, String stationStarting, String stationFinal, String dataStarting, String timeStarting, String dataFinal, String timeFinal, float prize) {
+        this.Id=id;
+        this.train = train;
+        this.stationStarting = stationStarting;
+        this.stationFinal = stationFinal;
+        this.dataStarting = dataStarting;
+        this.timeStarting = timeStarting;
+        this.dataFinal = dataFinal;
+        this.timeFinal = timeFinal;
+        this.prize = prize;
+    }
 
     public long getId() {
         return Id;

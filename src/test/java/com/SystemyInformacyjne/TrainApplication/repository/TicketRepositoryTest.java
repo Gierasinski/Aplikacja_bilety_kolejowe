@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
+
 import java.util.ArrayList;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,7 +25,7 @@ class TicketRepositoryTest extends BaseTest{
 
 
     @Test
-    void addTicketTest() throws Exception {
+    void addTicketTest(){
     User user = new User("UsernameTest232211","mailmail232211@mail.com","Password" );
     user.setId(99l);
     userRepository.save(user);
@@ -38,7 +40,7 @@ class TicketRepositoryTest extends BaseTest{
     assertThat(l.size()).isEqualTo(ticketList.size());
     }
     @Test
-    void updateTicketChangesApply() throws Exception {
+    void updateTicketChangesApply(){
         User user = new User("UsernameTest232211","mailmail232211@mail.com","Password" );
         user.setId(99l);
         userRepository.save(user);
